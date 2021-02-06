@@ -2,6 +2,12 @@ package com.game;
 
 public class Room {
 
+    public String location;
+    public Room northExit;
+    public Room southExit;
+    public Room eastExit;
+    public Room westExit;
+
     public Room(String location) {
         this.location = location;
     }
@@ -24,11 +30,5 @@ public class Room {
             westExit = west;
         }
     }
-
-    public String location;
-    public Room northExit;
-    public Room southExit;
-    public Room eastExit;
-    public Room westExit;
 
 }

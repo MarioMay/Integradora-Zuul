@@ -12,7 +12,6 @@ public class Game {
 
     private void main_View() {
 
-
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
@@ -73,11 +72,13 @@ public class Game {
 
     private boolean process_Command(Command command) {
         boolean wantToQuit = false;
+        String commandWord = command.get_CommandWord();
+
         if (command.is_Unknown()) {
             System.out.println("I don't know what you mean...");
             return false;
         }
-        String commandWord = command.get_CommandWord();
+        
         if (commandWord.equals("help")) {
             help_View();
         } else if (commandWord.equals("go")) {

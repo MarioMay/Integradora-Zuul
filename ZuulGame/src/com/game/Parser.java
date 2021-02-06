@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class Parser {
 
+    private CommandWords commands;
+    private Scanner reader;
+
     public Parser() {
         commands = new CommandWords();
         reader = new Scanner(System.in);
@@ -32,8 +35,5 @@ public class Parser {
             return new Command(null, secondInput);
         }
     }
-
-    private CommandWords commands;
-    private Scanner reader;
 
 }
