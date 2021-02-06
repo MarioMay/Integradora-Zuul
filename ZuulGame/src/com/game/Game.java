@@ -10,8 +10,12 @@ public class Game {
         parser = new Parser();
     }
 
+  
+    /**
+     * Print the welcome when the game starts.
+     */
     private void gameStartScreen() {
-
+      
         System.out.println("\nWelcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.\n");
@@ -33,6 +37,12 @@ public class Game {
         System.out.println();
     }
 
+    
+    /**
+     * Print the text help when the user type "help".
+     */
+
+
     private void helpScreen() {
         System.out.println("You are lost. You are alone. You wander");
         System.out.println("around at the university.\n");
@@ -41,7 +51,13 @@ public class Game {
     }
 
 
+
+    /**
+     * Builds the location rooms with their exits and the message 
+     * that will show  when the user gets in some of those locations.
+     */
     private void buildRooms() {
+
         Room outside, theatre, pub, lab, office;
 
         outside = new Room("outside the main entrance of the university");
@@ -58,6 +74,12 @@ public class Game {
         currentRoom = outside;
     }
 
+
+
+    /**
+     *  Main function of the game, this start and keep executing
+     *  the game until the games is finished.
+     */
     public void startGame() {
         gameStartScreen();
         boolean isGameFinished = false;
@@ -69,7 +91,14 @@ public class Game {
         System.out.println("Thank you for playing.  Good bye.");
     }
 
+
+    /**
+     * Given a command, process (that is: execute) the command.
+     * @param command The command to be processed.
+     * @return true If the command ends the game, false otherwise.
+     */
     private boolean processCommand(Command command) {
+      
         boolean wantToQuit = false;
         String commandWord = command.getCommandWord();
 
@@ -88,6 +117,12 @@ public class Game {
         return wantToQuit;
     }
 
+
+    /** 
+     * Let the user move into the rooms with the directions
+     * that the user type. If there is an exit, enter
+     * the new room, otherwise print an error message.
+     */
     private void navigate(Command command) {
         if (!command.hasDirection()) {
             System.out.println("Go where?");
@@ -129,6 +164,13 @@ public class Game {
         }
     }
 
+
+    
+    /** 
+     * Check if the user typed "Quit" and verify the rest of the command to see
+     * whether we really quit the game.
+     * @return true, if this command quits the game, false otherwise.
+     */
     private boolean quitGame(Command command) {
         if (command.hasDirection()) {
             System.out.println("Quit what?");
