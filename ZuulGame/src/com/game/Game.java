@@ -72,9 +72,9 @@ public class Game {
 
     private boolean process_Command(Command command) {
         boolean wantToQuit = false;
-        String commandWord = command.get_CommandWord();
+        String commandWord = command.getCommandWord();
 
-        if (command.is_Unknown()) {
+        if (command.isUnknown()) {
             System.out.println("I don't know what you mean...");
             return false;
         }
@@ -90,11 +90,11 @@ public class Game {
     }
 
     private void navigate(Command command) {
-        if (!command.has_Direction()) {
+        if (!command.hasDirection()) {
             System.out.println("Go where?");
             return;
         }
-        String direction = command.get_Direction();
+        String direction = command.getDirection();
         Room nextRoom = null;
         if (direction.equals("north")) {
             nextRoom = currentRoom.northExit;
@@ -131,7 +131,7 @@ public class Game {
     }
 
     private boolean quit(Command command) {
-        if (command.has_Direction()) {
+        if (command.hasDirection()) {
             System.out.println("Quit what?");
             return false;
         } else {

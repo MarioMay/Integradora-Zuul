@@ -10,19 +10,19 @@ public class Command {
         this.direction = direction;
     }
 
-    public String get_CommandWord() {
+    public String getCommandWord() {
         return commandWord;
     }
 
-    public String get_Direction() {
+    public String getDirection() {
         return direction;
     }
 
-    public boolean is_Unknown() {
-        return (commandWord == null);
+    public boolean isUnknown() {
+        return (commandWord.equals(null));
     }
 
-    public boolean has_Direction() {
+    public boolean hasDirection() {
         return (direction != null);
     }
 
