@@ -12,7 +12,7 @@ public class Parser {
         reader = new Scanner(System.in);
     }
 
-    public Command get_Command() {
+    public Command getCommand() {
         String inputLine;
         String firstInput = null;
         String secondInput = null;
@@ -29,7 +29,7 @@ public class Parser {
             }
         }
 
-        if (commands.is_Command(firstInput)) {
+        if (commands.isCommand(firstInput)) {
             return new Command(firstInput, secondInput);
         } else {
             return new Command(null, secondInput);

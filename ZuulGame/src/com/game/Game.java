@@ -6,17 +6,16 @@ public class Game {
     private Parser parser;
 
     public Game() {
-        build_Rooms();
+        buildRooms();
         parser = new Parser();
     }
 
-    private void main_View() {
+    private void gameStartScreen() {
 
-        System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
+        System.out.println("\nWelcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.\n");
-        System.out.println("You are " + currentRoom.get_Location());
+        System.out.println("You are " + currentRoom.getLocation());
         System.out.print("Exits: ");
 
         if (currentRoom.northExit != null) {
@@ -34,16 +33,15 @@ public class Game {
         System.out.println();
     }
 
-    private void help_View() {
+    private void helpScreen() {
         System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
-        System.out.println();
+        System.out.println("around at the university.\n");
         System.out.println("Your command words are:");
         System.out.println("go quit help");
     }
 
 
-    private void build_Rooms() {
+    private void buildRooms() {
         Room outside, theatre, pub, lab, office;
 
         outside = new Room("outside the main entrance of the university");
@@ -52,25 +50,26 @@ public class Game {
         lab = new Room("in a computing lab");
         office = new Room("in the computing admin office");
 
-        outside.set_Exits(null, theatre, lab, pub);
-        theatre.set_Exits(null, null, null, outside);
-        pub.set_Exits(null, outside, null, null);
-        lab.set_Exits(outside, office, null, null);
-        office.set_Exits(null, null, null, lab);
+        outside.setExits(null, theatre, lab, pub);
+        theatre.setExits(null, null, null, outside);
+        pub.setExits(null, outside, null, null);
+        lab.setExits(outside, office, null, null);
+        office.setExits(null, null, null, lab);
         currentRoom = outside;
     }
 
-    public void play_Game() {
-        main_View();
-        boolean finished = false;
-        while (!finished) {
-            Command command = parser.get_Command();
-            finished = process_Command(command);
+    public void startGame() {
+        gameStartScreen();
+        boolean isGameFinished = false;
+
+        while (!isGameFinished) {
+            Command command = parser.getCommand();
+            isGameFinished = processCommand(command);
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
 
-    private boolean process_Command(Command command) {
+    private boolean processCommand(Command command) {
         boolean wantToQuit = false;
         String commandWord = command.getCommandWord();
 
@@ -80,11 +79,11 @@ public class Game {
         }
         
         if (commandWord.equals("help")) {
-            help_View();
+            helpScreen();
         } else if (commandWord.equals("go")) {
             navigate(command);
         } else if (commandWord.equals("quit")) {
-            wantToQuit = quit(command);
+            wantToQuit = quitGame(command);
         }
         return wantToQuit;
     }
@@ -112,7 +111,7 @@ public class Game {
             System.out.println("There is no door!");
         } else {
             currentRoom = nextRoom;
-            System.out.println("You are " + currentRoom.get_Location());
+            System.out.println("You are " + currentRoom.getLocation());
             System.out.print("Exits: ");
             if (currentRoom.northExit != null) {
                 System.out.print("north ");
@@ -130,7 +129,7 @@ public class Game {
         }
     }
 
-    private boolean quit(Command command) {
+    private boolean quitGame(Command command) {
         if (command.hasDirection()) {
             System.out.println("Quit what?");
             return false;

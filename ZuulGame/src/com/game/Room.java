@@ -12,11 +12,11 @@ public class Room {
         this.location = location;
     }
 
-    public String get_Location() {
+    public String getLocation() {
         return location;
     }
 
-    public void set_Exits(Room north, Room east, Room south, Room west) {
+    public void setExits(Room north, Room east, Room south, Room west) {
         if (north != null) {
             northExit = north;
         }
