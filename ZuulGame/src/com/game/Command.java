@@ -20,31 +20,32 @@ public class Command {
      * command was not understood, the result is null.
      * @return The command word.
      */
-    public String get_CommandWord() {
+    public String getCommandWord() {
         return commandWord;
     }
 
-    /**
+     /**
      * @return The second word of the command (the "direction"). 
      *         Returns null if there was no second word.
      */
-    public String get_Direction() {
+    public String getDirection() {
         return direction;
     }
 
-    /**
+     /**
      * Check if the command match with somo of the commands expected.
      * @return true if this command was not understood.
      */
-    public boolean is_Unknown() {
-        return (commandWord == null);
+    public boolean isUnknown() {
+        return (commandWord.equals(null));
     }
-
-    /**
+      
+      
+     /**
      * Checks if the command has the second parameter "direction"
      * @return true if the command has a "direction".
      */
-    public boolean has_Direction() {
+    public boolean hasDirection() {
         return (direction != null);
     }
 

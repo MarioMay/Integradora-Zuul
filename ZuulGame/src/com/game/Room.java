@@ -22,7 +22,7 @@ public class Room {
      /**
      * @return The location of the room.
      */
-    public String get_Location() {
+    public String getLocation() {
         return location;
     }
 
@@ -35,7 +35,8 @@ public class Room {
      * Define the exits of this room.  Every direction either leads
      * to another room or in case it's null, means there's no exit there.
      */
-    public void set_Exits(Room north, Room east, Room south, Room west) {
+    public void setExits(Room north, Room east, Room south, Room west) {
+
         if (north != null) {
             northExit = north;
         }
