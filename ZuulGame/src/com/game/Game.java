@@ -10,6 +10,9 @@ public class Game {
         parser = new Parser();
     }
 
+    /**
+     * Print the welcome when the game starts.
+     */
     private void main_View() {
 
         System.out.println();
@@ -34,6 +37,10 @@ public class Game {
         System.out.println();
     }
 
+    
+    /**
+     * Print the text help when the user type "help".
+     */
     private void help_View() {
         System.out.println("You are lost. You are alone. You wander");
         System.out.println("around at the university.");
@@ -43,6 +50,10 @@ public class Game {
     }
 
 
+    /**
+     * Builds the location rooms with their exits and the message 
+     * that will show  when the user gets in some of those locations.
+     */
     private void build_Rooms() {
         Room outside, theatre, pub, lab, office;
 
@@ -60,6 +71,11 @@ public class Game {
         currentRoom = outside;
     }
 
+
+    /**
+     *  Main function of the game, this start and keep executing
+     *  the game until the games is finished.
+     */
     public void play_Game() {
         main_View();
         boolean finished = false;
@@ -70,6 +86,12 @@ public class Game {
         System.out.println("Thank you for playing.  Good bye.");
     }
 
+
+    /**
+     * Given a command, process (that is: execute) the command.
+     * @param command The command to be processed.
+     * @return true If the command ends the game, false otherwise.
+     */
     private boolean process_Command(Command command) {
         boolean wantToQuit = false;
         String commandWord = command.get_CommandWord();
@@ -89,6 +111,12 @@ public class Game {
         return wantToQuit;
     }
 
+
+    /** 
+     * Let the user move into the rooms with the directions
+     * that the user type. If there is an exit, enter
+     * the new room, otherwise print an error message.
+     */
     private void navigate(Command command) {
         if (!command.has_Direction()) {
             System.out.println("Go where?");
@@ -130,6 +158,12 @@ public class Game {
         }
     }
 
+    
+    /** 
+     * Check if the user typed "Quit" and verify the rest of the command to see
+     * whether we really quit the game.
+     * @return true, if this command quits the game, false otherwise.
+     */
     private boolean quit(Command command) {
         if (command.has_Direction()) {
             System.out.println("Quit what?");
