@@ -8,15 +8,35 @@ public class Room {
     public Room eastExit;
     public Room westExit;
 
+    /**
+     * Create a room based in "location". Initially, it has
+     * no exits. "location" is something like "a kitchen" or
+     * "an open court yard".
+     * @param location The room's location.
+     */
     public Room(String location) {
         this.location = location;
     }
 
-    public String get_Location() {
+
+     /**
+     * @return The location of the room.
+     */
+    public String getLocation() {
         return location;
     }
 
-    public void set_Exits(Room north, Room east, Room south, Room west) {
+    
+    /**
+     * @param north The north exit.
+     * @param east The east east.
+     * @param south The south exit.
+     * @param west The west exit.
+     * Define the exits of this room.  Every direction either leads
+     * to another room or in case it's null, means there's no exit there.
+     */
+    public void setExits(Room north, Room east, Room south, Room west) {
+
         if (north != null) {
             northExit = north;
         }

@@ -12,27 +12,31 @@ public class Parser {
         reader = new Scanner(System.in);
     }
 
-    public Command get_Command() {
+
+    /**
+     * @return The next command from the user.
+     */
+    public Command getCommand() {
         String inputLine;
-        String firstInput = null;
-        String secondInput = null;
+        String actionInput = null;
+        String locationInput = null;
 
-        System.out.print("> ");
-
+        System.out.print(">> ");
         inputLine = reader.nextLine();
-
+        
         Scanner tokenizer = new Scanner(inputLine);
+
         if (tokenizer.hasNext()) {
-            firstInput = tokenizer.next();
+            actionInput = tokenizer.next();
             if (tokenizer.hasNext()) {
-                secondInput = tokenizer.next();
+                locationInput = tokenizer.next();
             }
         }
 
-        if (commands.is_Command(firstInput)) {
-            return new Command(firstInput, secondInput);
+        if (commands.isCommand(actionInput)) {
+            return new Command(actionInput, locationInput);
         } else {
-            return new Command(null, secondInput);
+            return new Command(null, locationInput);
         }
     }
 
