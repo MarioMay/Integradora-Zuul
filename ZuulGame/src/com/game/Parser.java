@@ -12,7 +12,11 @@ public class Parser {
         reader = new Scanner(System.in);
     }
 
+    /**
+     * @return The next command from the user.
+     */
     public Command get_Command() {
+        
         String inputLine;
         String firstInput = null;
         String secondInput = null;
@@ -20,8 +24,8 @@ public class Parser {
         System.out.print("> ");
 
         inputLine = reader.nextLine();
-
         Scanner tokenizer = new Scanner(inputLine);
+
         if (tokenizer.hasNext()) {
             firstInput = tokenizer.next();
             if (tokenizer.hasNext()) {
