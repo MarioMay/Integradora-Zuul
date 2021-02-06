@@ -10,7 +10,6 @@ public class Game {
         parser = new Parser();
     }
 
-  
     /**
      * Print the welcome when the game starts.
      */
@@ -41,15 +40,12 @@ public class Game {
     /**
      * Print the text help when the user type "help".
      */
-
-
     private void helpScreen() {
         System.out.println("You are lost. You are alone. You wander");
         System.out.println("around at the university.\n");
         System.out.println("Your command words are:");
         System.out.println("go quit help");
     }
-
 
 
     /**
@@ -73,7 +69,6 @@ public class Game {
         office.setExits(null, null, null, lab);
         currentRoom = outside;
     }
-
 
 
     /**
@@ -165,7 +160,6 @@ public class Game {
     }
 
 
-    
     /** 
      * Check if the user typed "Quit" and verify the rest of the command to see
      * whether we really quit the game.

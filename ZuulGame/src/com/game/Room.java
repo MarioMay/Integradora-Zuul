@@ -28,10 +28,10 @@ public class Room {
 
     
     /**
-     * @param northExit The north exit.
-     * @param eastExit The east east.
-     * @param southExit The south exit.
-     * @param westExit The west exit.
+     * @param north The north exit.
+     * @param east The east east.
+     * @param south The south exit.
+     * @param west The west exit.
      * Define the exits of this room.  Every direction either leads
      * to another room or in case it's null, means there's no exit there.
      */
