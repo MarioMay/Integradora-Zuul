@@ -2,6 +2,9 @@ package com.game;
 
 public class Command {
 
+    private String commandWord;
+    private String direction;
+
     public Command(String action, String direction) {
         commandWord = action;
         this.direction = direction;
@@ -22,8 +25,5 @@ public class Command {
     public boolean has_Direction() {
         return (direction != null);
     }
-
-    private String commandWord;
-    private String direction;
 
 }

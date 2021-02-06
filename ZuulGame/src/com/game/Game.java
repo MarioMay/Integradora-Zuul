@@ -5,7 +5,6 @@ public class Game {
     private Room currentRoom;
     private Parser parser;
 
-
     public Game() {
         build_Rooms();
         parser = new Parser();
@@ -74,23 +73,17 @@ public class Game {
 
     private boolean process_Command(Command command) {
         boolean wantToQuit = false;
-        String commandWord = command.get_CommandWord();
-
         if (command.is_Unknown()) {
             System.out.println("I don't know what you mean...");
             return false;
         }
-
-        switch (commandWord) {
-            case "help":
-                help_View();
-                break;
-            case "go":
-                navigate(command);
-                break;
-            case "quit":
-                wantToQuit = quit(command);
-                break;
+        String commandWord = command.get_CommandWord();
+        if (commandWord.equals("help")) {
+            help_View();
+        } else if (commandWord.equals("go")) {
+            navigate(command);
+        } else if (commandWord.equals("quit")) {
+            wantToQuit = quit(command);
         }
         return wantToQuit;
     }
