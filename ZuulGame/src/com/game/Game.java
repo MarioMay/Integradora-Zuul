@@ -23,11 +23,12 @@ public class Game {
      */
     private void gameStartScreen() {
       
-        System.out.println("\nWelcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("Type 'help' if you need help.\n");
-        System.out.println("You are " + currentRoom.getLocation());
-        System.out.print("Exits: ");
+        System.out.println("\nWelcome to the World of Zuul!"
+        +"\nWorld of Zuul is a new, incredibly boring adventure game."
+        +"\nType 'help' if you need help.\n");
+        System.out.println("You are " + currentRoom.getLocation()
+        + "Exits: ");
+        
 
         if (currentRoom.getExitRoomByKey(NORTH) != null) {
             System.out.print(NORTH + " ");
@@ -53,10 +54,10 @@ public class Game {
      * Print the text help when the user type "help".
      */
     private void helpScreen() {
-        System.out.println("\nYou are lost. You are alone. You wander");
-        System.out.println("around at the university.\n");
-        System.out.println("Your command words are:");
-        System.out.println("go quit help");
+        System.out.println("\nYou are lost. You are alone. You wander"
+        +"\naround at the university.\n"
+        +"\nYour command words are:"
+        +"\n go quit help");
     }
 
 
@@ -66,7 +67,12 @@ public class Game {
      */
     private void buildRooms() {
 
-        Room outside, theatre, pub, lab, office;
+        
+        Room outside;
+        Room theatre;
+        Room pub;
+        Room lab;
+        Room office;
 
         outside = new Room("outside the main entrance of the university");
         theatre = new Room("in a lecture theatre");
@@ -92,6 +98,7 @@ public class Game {
      *  the game until the games is finished.
      */
     public void startGame() {
+
         gameStartScreen();
         boolean isGameFinished = false;
 
