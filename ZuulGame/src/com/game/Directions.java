@@ -10,7 +10,7 @@ public class Directions {
     /**
      * Returns the directions available to navigate of a specific room
      * @param room Receives a object room (outside, lab, etc...)
-     * @return directions  
+     * @return directions
      */
     public String getExitDirections(Room room) {
         String directions = " ";
