@@ -117,7 +117,7 @@ public class Game {
      */
     private boolean processCommand(Command command) {
       
-        boolean wantToQuit = false;
+        
         String commandWord = command.getCommandWord();
 
         if (command.isUnknown()) {
@@ -134,9 +134,9 @@ public class Game {
         } 
 
         if (commandWord.equals(QUIT)) {
-            wantToQuit = quitGame(command);
+            return quitGame(command);
         }
-        return wantToQuit;
+        return false;
     }
 
 
