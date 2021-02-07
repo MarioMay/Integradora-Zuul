@@ -12,6 +12,7 @@ public class Game {
     
     private Room currentRoom;
     private Parser parser;
+    private Directions directions = new Directions();
 
     public Game() {
         buildRooms();
@@ -27,26 +28,8 @@ public class Game {
         +"\nWorld of Zuul is a new, incredibly boring adventure game."
         +"\nType 'help' if you need help.\n");
         System.out.println("You are " + currentRoom.getLocation()
-        + "Exits: ");
-        
+        + "Exits: "+directions.getExitDirections(currentRoom)+"\n\n");
 
-        if (currentRoom.getExitRoomByKey(NORTH) != null) {
-            System.out.print(NORTH + " ");
-        }
-
-        if (currentRoom.getExitRoomByKey(EAST) != null) {
-            System.out.print(EAST + " ");
-        }
-
-        if (currentRoom.getExitRoomByKey(SOUTH) != null) {
-            System.out.print(SOUTH + " ");
-        }
-
-        if (currentRoom.getExitRoomByKey(WEST) != null) {
-            System.out.print(WEST + " ");
-        }
-
-        System.out.println();
     }
 
     
@@ -156,24 +139,8 @@ public class Game {
         } else {
             currentRoom = nextRoom;
             System.out.println("\nYou are " + currentRoom.getLocation());
-            System.out.print("Exits: ");
+            System.out.print("Exits: "+directions.getExitDirections(currentRoom)+"\n\n");
 
-            if (currentRoom.getExitRoomByKey(NORTH) != null) {
-                System.out.print(NORTH + " ");
-            }
-
-            if (currentRoom.getExitRoomByKey(EAST) != null) {
-                System.out.print(EAST + " ");
-            }
-
-            if (currentRoom.getExitRoomByKey(SOUTH) != null) {
-                System.out.print(SOUTH + " ");
-            }
-
-            if (currentRoom.getExitRoomByKey(WEST) != null) {
-                System.out.print(WEST + " ");
-            }
-            System.out.println("\n");
         }
     }
 
