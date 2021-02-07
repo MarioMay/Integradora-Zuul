@@ -3,10 +3,7 @@ package com.game;
 public class Room {
 
     public String location;
-    public Room northExit;
-    public Room southExit;
-    public Room eastExit;
-    public Room westExit;
+    private RoomExitsCollection Exits = new RoomExitsCollection();
 
     /**
      * Create a room based in "location". Initially, it has
@@ -26,29 +23,14 @@ public class Room {
         return location;
     }
 
-    
-    /**
-     * @param north The north exit.
-     * @param east The east east.
-     * @param south The south exit.
-     * @param west The west exit.
-     * Define the exits of this room.  Every direction either leads
-     * to another room or in case it's null, means there's no exit there.
-     */
-    public void setExits(Room north, Room east, Room south, Room west) {
 
-        if (north != null) {
-            northExit = north;
-        }
-        if (east != null) {
-            eastExit = east;
-        }
-        if (south != null) {
-            southExit = south;
-        }
-        if (west != null) {
-            westExit = west;
-        }
+    public void addExit(String key, Room room) {
+        Exits.addExit(key, room);
+    }
+
+
+    public Room getExitRoomByKey(String key) {
+        return Exits.getExitsByKey(key);
     }
 
 }
