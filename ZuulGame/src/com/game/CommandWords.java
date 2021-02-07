@@ -2,11 +2,19 @@ package com.game;
 
 public class CommandWords {
 
-    private static final String[] commands = { "go", "quit", "help" };
+    private static final String[] commands = {
+            "go", "quit", "help"
+    };
 
-    public boolean is_Command(String aString) {
-        for (int i = 0; i < commands.length; i++) {
-            if (commands[i].equals(aString)) {
+
+    /**
+     * Check if the input of the user is a valid command. 
+     * @return true if a given string is a valid command,
+     *         false otherwise
+     */
+    public boolean isCommand(String aString) {
+        for (String command : commands) {
+            if (command.equals(aString)) {
                 return true;
             }
         }
