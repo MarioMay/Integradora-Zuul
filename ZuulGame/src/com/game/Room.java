@@ -2,7 +2,7 @@ package com.game;
 
 public class Room {
 
-    public String location;
+    private String location;
     private RoomExitsCollection Exits = new RoomExitsCollection();
 
     /**
