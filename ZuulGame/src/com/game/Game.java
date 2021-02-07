@@ -23,11 +23,13 @@ public class Game {
      */
     private void gameStartScreen() {
       
-        System.out.println("\nWelcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("Type 'help' if you need help.\n");
-        System.out.println("You are " + currentRoom.getLocation());
-        System.out.print("Exits: ");
+        System.out.println("\nWelcome to the World of Zuul!"
+        +"\nWorld of Zuul is a new, incredibly boring adventure game."
+        +"\nType 'help' if you need help.\n");
+        
+        System.out.println("You are " + currentRoom.getLocation()
+        + "\nExits: ");
+        
 
         if (currentRoom.getExitRoomByKey(NORTH) != null) {
             System.out.print(NORTH + " ");
