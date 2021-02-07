@@ -67,7 +67,6 @@ public class Game {
      */
     private void buildRooms() {
 
-        
         Room outside;
         Room theatre;
         Room pub;
@@ -100,29 +99,26 @@ public class Game {
     public void startGame() {
 
         gameStartScreen();
-        boolean isGameFinished = false;
 
-        while (!isGameFinished) {
+        while (true) {
             Command command = parser.getCommand();
-            isGameFinished = processCommand(command);
+            processCommand(command);
         }
-        System.out.println("Thank you for playing.  Good bye.");
+        
     }
 
 
     /**
      * Given a command, process (that is: execute) the command.
      * @param command The command to be processed.
-     * @return true If the command ends the game, false otherwise.
      */
-    private boolean processCommand(Command command) {
+    private void processCommand(Command command) {
       
-        
         String commandWord = command.getCommandWord();
 
         if (command.isUnknown()) {
             System.out.println("I don't know what you mean...");
-            return false;
+            return;
         }
         
         if (commandWord.equals(HELP)) {
@@ -134,9 +130,9 @@ public class Game {
         } 
 
         if (commandWord.equals(QUIT)) {
-            return quitGame(command);
+            quitGame();
         }
-        return false;
+        
     }
 
 
@@ -187,13 +183,9 @@ public class Game {
      * whether we really quit the game.
      * @return true, if this command quits the game, false otherwise.
      */
-    private boolean quitGame(Command command) {
-        if (command.hasDirection()) {
-            System.out.println("Quit what?");
-            return false;
-        } else {
-            return true;
-        }
+    private void quitGame() {
+        System.out.println("Thank you for playing. Good bye.");
+        System.exit(0);
     }
 
 }
