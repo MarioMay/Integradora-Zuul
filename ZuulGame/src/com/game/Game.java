@@ -2,6 +2,14 @@ package com.game;
 
 public class Game {
 
+    private static final String NORTH = "north";
+    private static final String SOUTH = "south";
+    private static final String EAST = "east";
+    private static final String WEST = "west";
+    private static final String GO = "go";
+    private static final String QUIT = "quit";
+    private static final String HELP = "help";
+    
     private Room currentRoom;
     private Parser parser;
 
@@ -21,18 +29,22 @@ public class Game {
         System.out.println("You are " + currentRoom.getLocation());
         System.out.print("Exits: ");
 
-       /** if (currentRoom.northExit != null) {
-            System.out.print("north ");
+        if (currentRoom.getExitRoomByKey(NORTH) != null) {
+            System.out.print(NORTH + " ");
         }
-        if (currentRoom.eastExit != null) {
-            System.out.print("east ");
+
+        if (currentRoom.getExitRoomByKey(EAST) != null) {
+            System.out.print(EAST + " ");
         }
-        if (currentRoom.southExit != null) {
-            System.out.print("south ");
+
+        if (currentRoom.getExitRoomByKey(SOUTH) != null) {
+            System.out.print(SOUTH + " ");
         }
-        if (currentRoom.westExit != null) {
-            System.out.print("west ");
-        }**/
+
+        if (currentRoom.getExitRoomByKey(WEST) != null) {
+            System.out.print(WEST + " ");
+        }
+
         System.out.println();
     }
 
@@ -41,7 +53,7 @@ public class Game {
      * Print the text help when the user type "help".
      */
     private void helpScreen() {
-        System.out.println("You are lost. You are alone. You wander");
+        System.out.println("\nYou are lost. You are alone. You wander");
         System.out.println("around at the university.\n");
         System.out.println("Your command words are:");
         System.out.println("go quit help");
@@ -62,11 +74,15 @@ public class Game {
         lab = new Room("in a computing lab");
         office = new Room("in the computing admin office");
 
-        //outside.setExits(null, theatre, lab, pub);
-       // theatre.setExits(null, null, null, outside);
-       // pub.setExits(null, outside, null, null);
-       // lab.setExits(outside, office, null, null);
-       // office.setExits(null, null, null, lab);
+        outside.addExit(EAST, theatre);
+        outside.addExit(SOUTH, lab);
+        outside.addExit(WEST, pub);
+        theatre.addExit(WEST, outside);
+        pub.addExit(EAST, outside);
+        lab.addExit(NORTH, outside);
+        lab.addExit(EAST, office);
+        office.addExit(WEST, lab);
+
         currentRoom = outside;
     }
 
@@ -102,11 +118,11 @@ public class Game {
             return false;
         }
         
-        if (commandWord.equals("help")) {
+        if (commandWord.equals(HELP)) {
             helpScreen();
-        } else if (commandWord.equals("go")) {
+        } else if (commandWord.equals(GO)) {
             navigate(command);
-        } else if (commandWord.equals("quit")) {
+        } else if (commandWord.equals(QUIT)) {
             wantToQuit = quitGame(command);
         }
         return wantToQuit;
@@ -125,37 +141,32 @@ public class Game {
         }
         String direction = command.getDirection();
         Room nextRoom = null;
-        if (direction.equals("north")) {
-        //    nextRoom = currentRoom.northExit;
-        }
-        if (direction.equals("east")) {
-          //  nextRoom = currentRoom.eastExit;
-        }
-        if (direction.equals("south")) {
-          //  nextRoom = currentRoom.southExit;
-        }
-        if (direction.equals("west")) {
-          //  nextRoom = currentRoom.westExit;
-        }
+
+        nextRoom = currentRoom.getExitRoomByKey(direction);
+
         if (nextRoom == null) {
             System.out.println("There is no door!");
         } else {
             currentRoom = nextRoom;
-            System.out.println("You are " + currentRoom.getLocation());
+            System.out.println("\nYou are " + currentRoom.getLocation());
             System.out.print("Exits: ");
-          //  if (currentRoom.northExit != null) {
-                System.out.print("north ");
-           // }
-           // if (currentRoom.eastExit != null) {
-                System.out.print("east ");
-           // }
-           // if (currentRoom.southExit != null) {
-                System.out.print("south ");
-           // }
-            //if (currentRoom.westExit != null) {
-                System.out.print("west ");
-            //}
-            System.out.println();
+
+            if (currentRoom.getExitRoomByKey(NORTH) != null) {
+                System.out.print(NORTH + " ");
+            }
+
+            if (currentRoom.getExitRoomByKey(EAST) != null) {
+                System.out.print(EAST + " ");
+            }
+
+            if (currentRoom.getExitRoomByKey(SOUTH) != null) {
+                System.out.print(SOUTH + " ");
+            }
+
+            if (currentRoom.getExitRoomByKey(WEST) != null) {
+                System.out.print(WEST + " ");
+            }
+            System.out.println("\n");
         }
     }
 
