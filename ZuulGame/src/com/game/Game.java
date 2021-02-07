@@ -178,11 +178,6 @@ public class Game {
     }
 
 
-    /** 
-     * Check if the user typed "Quit" and verify the rest of the command to see
-     * whether we really quit the game.
-     * @return true, if this command quits the game, false otherwise.
-     */
     private void quitGame() {
         System.out.println("Thank you for playing. Good bye.");
         System.exit(0);
