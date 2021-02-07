@@ -4,14 +4,14 @@ import java.util.HashMap;
 
 public class RoomExitsCollection {
 
-    private HashMap<String, Room> Exists = new HashMap<String, Room>();
+    private HashMap<String, Room> Exits = new HashMap<String, Room>();
 
     public void addExit(String DirectionKey, Room Exit) {
-        Exists.put(DirectionKey, Exit);
+        Exits.put(DirectionKey, Exit);
     }
 
     public Room getExitsByKey(String key) {
-        return Exists.get(key);
+        return Exits.get(key);
     }
 
 }
