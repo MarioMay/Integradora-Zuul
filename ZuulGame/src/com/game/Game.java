@@ -120,9 +120,13 @@ public class Game {
         
         if (commandWord.equals(HELP)) {
             helpScreen();
-        } else if (commandWord.equals(GO)) {
+        } 
+        
+        if (commandWord.equals(GO)) {
             navigate(command);
-        } else if (commandWord.equals(QUIT)) {
+        } 
+
+        if (commandWord.equals(QUIT)) {
             wantToQuit = quitGame(command);
         }
         return wantToQuit;
